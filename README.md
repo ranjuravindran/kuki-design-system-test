@@ -1,22 +1,30 @@
-# rupifi-payments-preview
+# Rupifi Payments Dashboard — Live Preview
 
-Deploy-only mirror for GitHub Pages. This repo intentionally contains nothing
-but the built, password-protected page:
+A hosted preview of a dashboard I built as a portfolio piece: a pixel-accurate
+implementation of Payments, Invoices, Customers, Bulk Actions and Workflow
+screens from a Figma design, in React + TypeScript.
+
+**[View the live preview →](https://ranjuravindran.github.io/kuki-design-system-test/)**
+
+It's password-protected, not because anything is hidden, but because the
+underlying design is a real product and this preview isn't meant to be
+publicly indexed or crawled. Ask me for the password if you'd like to look.
+
+## What's in this repo
+
+Just the built output — no source code:
 
 ```
-index.html   the entire app, AES-256-GCM encrypted, gated behind a password
-.nojekyll    tells Pages to serve files as-is
+index.html   the built app
+.nojekyll    tells GitHub Pages to serve files as-is
 robots.txt   disallows crawlers
 ```
 
-There is no source code here — no React, no components, no design tokens. The
-actual project lives in a separate private repository and is rebuilt and
-copied into this one each time the preview needs to update. That separation
-is deliberate: this repo can be public without exposing anything, because
-`index.html` contains only ciphertext until the correct password is entered
-in the browser.
-
-To update the preview, from the source project:
+The app itself is encrypted client-side (AES-256-GCM, password-derived key)
+so the page is inert without the password — decryption happens entirely in
+your browser and nothing is sent anywhere. The actual source (React
+components, Figma tokens, etc.) lives in a separate private repository and
+gets rebuilt into this one each time the preview updates:
 
 ```bash
 npm run build:protected -- --password "..."
